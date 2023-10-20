@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-    int i, j, a, b, counter=1, game;
+    int i, j, a, b, counter=1, gameOver = 0, loopOut = 0;
     int matrix[4][4];
     for(i=1;i<=3;i++){
         for(j=1;j<=3;j++){
@@ -11,7 +11,7 @@ int main(){
     printf("------------------------------\n\n");
     printf("--Welcome to the tic tac toe--\n\n");
     printf("------------------------------\n\n");
-    for(game=1; game<=9; game++){
+    while(!gameOver){
         if(counter == 1){
             printf("Enter your move player X: ");
         }
@@ -22,33 +22,49 @@ int main(){
         if(a > 3 || b > 3){
             printf("Invalid Move!");
             break;
-        }else{
+        }
+        else{
+            loopOut = 0;
             for(i=1;i<=3;i++){
                 for(j=1;j<=3;j++){
                     if(i == a && j == b){
-                        if(counter==1){
-                            matrix[i][j] = 88;
-                            printf("%c\t", matrix[i][j]);
-                        } else{
-                            matrix[i][j] = 79;
-                            printf("%c\t", matrix[i][j]);
+                        if(matrix[i][j] == 88 || matrix[i][j] == 79){
+                            printf("\n\nOverwrite not allowed\n\n");
+                            if(counter == 1){
+                                counter++;
+                            }
+                            else{
+                                counter = 1;
+                            }
+                            loopOut = 1;
+                        }
+                        else{
+                            if(counter==1){
+                                matrix[i][j] = 88;
+                                printf("%c\t", matrix[i][j]);
+                            } else{
+                                matrix[i][j] = 79;
+                                printf("%c\t", matrix[i][j]);
+                            }
                         }
                     }
                     else if(a == 0 && b == 0){
-                        break;
+                        gameOver = 1;
                     }
                     else{
-                        printf("%c\t", matrix[i][j]);
+                        if(!loopOut){
+                            printf("%c\t", matrix[i][j]);
+                        }
                     }
                 }
-                printf("\n");
+            printf("\n");
+        }
         }
         if(counter == 1){
             counter++;
         }
         else{
             counter = 1;
-        }
         }
     }
     return 0;
