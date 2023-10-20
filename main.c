@@ -12,7 +12,12 @@ int main(){
     printf("--Welcome to the tic tac toe--\n\n");
     printf("------------------------------\n\n");
     for(game=1; game<=9; game++){
-        printf("Enter your move player %d: ", counter);
+        if(counter == 1){
+            printf("Enter your move player X: ");
+        }
+        else{
+            printf("Enter your move player O: ");
+        }
         scanf("%d%d", &a, &b);
         if(a > 3 || b > 3){
             printf("Invalid Move!");
