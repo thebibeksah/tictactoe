@@ -1,7 +1,7 @@
 #include<stdio.h>
 
 int main(){
-    int i, j, a, b, counter=1, gameOver = 0, loopOut = 0;
+    int i, j, a, b, count = 0, counter=1, gameOver = 0, loopOut = 0;
     int matrix[4][4];
     for(i=1;i<=3;i++){
         for(j=1;j<=3;j++){
@@ -46,9 +46,14 @@ int main(){
                                 matrix[i][j] = 79;
                                 printf("%c\t", matrix[i][j]);
                             }
+                            count++;
+                            if(count == 9){
+                                gameOver = 1;
+                            }
                         }
                     }
                     else if(a == 0 && b == 0){
+                        printf("Game Over!!\n");
                         gameOver = 1;
                     }
                     else{
