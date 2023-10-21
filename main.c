@@ -47,13 +47,9 @@ int main(){
                                 printf("%c\t", matrix[i][j]);
                             }
                             count++;
-                            if(count == 9){
-                                gameOver = 1;
-                            }
                         }
                     }
                     else if(a == 0 && b == 0){
-                        printf("Game Over!!\n");
                         gameOver = 1;
                     }
                     else{
@@ -63,6 +59,10 @@ int main(){
                     }
                 }
             printf("\n");
+            if(count == 9){
+                printf("Game Over!!\n");
+                gameOver = 1;
+            }
         }
         }
         if(counter == 1){
